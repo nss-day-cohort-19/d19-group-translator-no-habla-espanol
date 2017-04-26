@@ -9,20 +9,25 @@ var Translator = (function (){
         "and": "et",
         "happy": "content",
         "new": "nouveau",
-        "year": "an"
+        "year": "an",
     }
     var newTranslationArray = []
 
     return {
+        resetArray : function(){
+            newTranslationArray = [];
+        },
         setFrench: function(text){
-
+            //takes user input string/splits it to an array, loops through that array and word replaces with new values.
             var frenchSplit = text.split(" ");
             for(var i=0;i<frenchSplit.length;i++){
+
                 newTranslationArray.push(frenchTranslate[frenchSplit[i]]);
 
             }
         },
         getFrench: function(){
+            //joins array together and returns translation
             newTranslation = newTranslationArray.join(" ");
             return newTranslation;
         }
@@ -32,9 +37,10 @@ var Translator = (function (){
 
 })();
 
-var translated = document.getElementById("translated");
+//Div on page to insert new translation
+var translatedDiv = document.getElementById("translated");
 
-
+//Translate button
 var translateBtn = document.getElementById("btn-translate");
 translateBtn.addEventListener("click", function(event){
 
@@ -43,7 +49,11 @@ translateBtn.addEventListener("click", function(event){
 
     var userText = document.getElementById("user-text").value;
 
+
+
+
     //Get user translate option
+
     var language;
     var translateOption = document.getElementsByName("translate-language");
     for(var i=0;i<translateOption.length;i++){
@@ -51,24 +61,34 @@ translateBtn.addEventListener("click", function(event){
             language = translateOption[i].value;
         }
     }
+
+    //Checks which language was selected and performs translation
     if (language === "French"){
+        //pass user input into desired translate option
+        Translator.resetArray();
         Translator.setFrench(userText);
-        translated.innerHTML = `<p>${Translator.getFrench()}</p>`;
+        //add to div on page
+        translatedDiv.innerHTML = `<p>${Translator.getFrench()}</p>`;
     } else if(language === "Hungarian"){
         Translator.setHungarian(userText);
-        translated.innerHTML = `<p>${Translator.getHungarian()}</p>`;
+        translatedDiv.innerHTML = `<p>${Translator.getHungarian()}</p>`;
     } else if(language === "Spanish"){
         Translator.setSpanish(userText);
-        translated.innerHTML = `<p>${Translator.getSpanish()}</p>`;
+        translatedDiv.innerHTML = `<p>${Translator.getSpanish()}</p>`;
     }
 
 
-    //pass user input into desired translate option
-
-    //return translation
-
-    //add to div on page
-
-
-
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
