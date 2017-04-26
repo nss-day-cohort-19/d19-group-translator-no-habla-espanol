@@ -76,9 +76,15 @@ translateBtn.addEventListener("click", function(event){
         Translator.setSpanish(userText);
         translatedDiv.innerHTML = `<p>${Translator.getSpanish()}</p>`;
     }
-
-
 })
+
+
+var speakBtn = document.getElementById("speak");
+speakBtn.addEventListener("click", function(event){
+    console.log(translatedDiv.textContent);
+    responsiveVoice.speak(translatedDiv.textContent);
+
+});
 
 
 
