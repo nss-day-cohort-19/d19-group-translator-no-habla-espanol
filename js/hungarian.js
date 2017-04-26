@@ -2,12 +2,12 @@ console.log("hungarian.js")
 Translator = (function(originalTranslator){
 
 	var hungarianTranslate = {
-		"Merry": "Vidám",
-		"Christmas": "Karácsony",
-		"and": "és",
+		"Merry": "Vid&#225m",
+		"Christmas": "Kar&#225csony",
+		"and": "&#233s",
 		"happy": "boldog",
-		"new": "új",
-		"year": "év",
+		"new": "&#250j",
+		"year": "&#233v",
 	}
 	var newTranslationArray = []
 
