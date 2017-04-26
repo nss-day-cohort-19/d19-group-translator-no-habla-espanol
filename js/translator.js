@@ -1,5 +1,5 @@
 // Creates variable that is main function
-var Translator = (function (){
+var Translator = (function (oldTranslation){
 
     // Create object to hold lexicon
     var frenchTranslate = {
@@ -13,11 +13,12 @@ var Translator = (function (){
     // Make new empty array to push translated phrase to
     var newTranslationArray = []
 
-    return {
-        resetArray : function(){
+
+        oldTranslation.resetArray= function(){
             newTranslationArray = [];
-        },
-        setFrench: function(text){
+        }
+
+        oldTranslation.setFrench= function(text){
             //takes user input string/splits it to an array, loops through that array and word replaces with new values.
             var frenchSplit = text.split(" ");
             for(var i=0;i<frenchSplit.length;i++){
@@ -25,17 +26,19 @@ var Translator = (function (){
                 newTranslationArray.push(frenchTranslate[frenchSplit[i]]);
 
             }
-        },
-        getFrench: function(){
+        }
+
+        oldTranslation.getFrench = function(){
             //joins array together and returns translation
             newTranslation = newTranslationArray.join(" ");
             return newTranslation;
         }
 
-    }
+    return oldTranslation
 
 
-})();
+
+}(Translator || {}));
 
 //Div on page to insert new translation
 var translatedDiv = document.getElementById("translated");
@@ -70,11 +73,11 @@ translateBtn.addEventListener("click", function(event){
         //add to div on page
         translatedDiv.innerHTML = `<p>${Translator.getFrench()}</p>`;
     } else if(language === "Hungarian"){
-        Translator.resetArray();
+        Translator.resetHungarian();
         Translator.setHungarian(userText);
         translatedDiv.innerHTML = `<p>${Translator.getHungarian()}</p>`;
     } else if(language === "Spanish"){
-        Translator.resetArray();
+        Translator.resetSpanish();
         Translator.setSpanish(userText);
         translatedDiv.innerHTML = `<p>${Translator.getSpanish()}</p>`;
     }
@@ -104,7 +107,7 @@ translateBtn.addEventListener("click", function(event){
 
     });
 
-console.log(responsiveVoice.getVoices());
+
 
 
 

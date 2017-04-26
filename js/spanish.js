@@ -1,5 +1,5 @@
 console.log("spanish.js loaded");
-Translator = (function(originalTranslator){
+var Translator = (function(oldTranslator){
 
     var spanishTranslate = {
         "Merry": "Feliz",
@@ -11,16 +11,23 @@ Translator = (function(originalTranslator){
     }
     var newTranslationArray = []
 
-        originalTranslator.setSpanish = function(text){
+        oldTranslator.resetSpanish = function() {
+             newTranslationArray = [];
+         }
+
+        oldTranslator.setSpanish = function(text){
             var spanishSplit = text.split(" ");
             for(var i=0; i<spanishSplit.length; i++){
                 newTranslationArray.push(spanishTranslate[spanishSplit[i]]);
             }
         }
-        originalTranslator.getSpanish = function(){
+        oldTranslator.getSpanish = function(){
             newTranslation = newTranslationArray.join(" ");
             return newTranslation;
         }
-        return Translator
+        return oldTranslator
 
-})(Translator);
+}(Translator || {}));
+
+
+console.log(Translator);

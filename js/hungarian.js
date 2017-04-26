@@ -1,5 +1,5 @@
 console.log("hungarian.js")
-Translator = (function(originalTranslator){
+var Translator = (function(oldTranslator){
 
 	var hungarianTranslate = {
 		"Merry": "Vid&#225m",
@@ -11,17 +11,21 @@ Translator = (function(originalTranslator){
 	}
 	var newTranslationArray = []
 
-		originalTranslator.setHungarian = function(text){
+		oldTranslator.resetHungarian = function() {
+			newTranslationArray = [];
+		}
+
+		oldTranslator.setHungarian = function(text){
 			var hungarianSplit = text.split(" ");
 			for(var i=0; i<hungarianSplit.length; i++){
 				newTranslationArray.push(hungarianTranslate[hungarianSplit[i]]);
 			}
 		}
-		originalTranslator.getHungarian = function(){
+		oldTranslator.getHungarian = function(){
 			newTranslation = newTranslationArray.join(" ");
 			return newTranslation;
 		}
-		return Translator
+		return oldTranslator
 
-})(Translator);
+}(Translator || {}));
 
