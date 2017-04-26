@@ -24,3 +24,4 @@ Translator = (function(originalTranslator){
 		return Translator
 	
 })(Translator);
+
