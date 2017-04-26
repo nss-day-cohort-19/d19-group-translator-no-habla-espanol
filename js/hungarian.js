@@ -22,6 +22,6 @@ Translator = (function(originalTranslator){
 			return newTranslation;
 		}
 		return Translator
-	
+
 })(Translator);
 

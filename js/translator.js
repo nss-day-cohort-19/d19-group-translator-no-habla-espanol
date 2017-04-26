@@ -1,8 +1,7 @@
-
-
+// Creates variable that is main function
 var Translator = (function (){
 
-
+    // Create object to hold lexicon
     var frenchTranslate = {
         "Merry": "Joyeux",
         "Christmas": "Noel",
@@ -11,6 +10,7 @@ var Translator = (function (){
         "new": "nouveau",
         "year": "an",
     }
+    // Make new empty array to push translated phrase to
     var newTranslationArray = []
 
     return {
@@ -70,9 +70,11 @@ translateBtn.addEventListener("click", function(event){
         //add to div on page
         translatedDiv.innerHTML = `<p>${Translator.getFrench()}</p>`;
     } else if(language === "Hungarian"){
+        Translator.resetArray();
         Translator.setHungarian(userText);
         translatedDiv.innerHTML = `<p>${Translator.getHungarian()}</p>`;
     } else if(language === "Spanish"){
+        Translator.resetArray();
         Translator.setSpanish(userText);
         translatedDiv.innerHTML = `<p>${Translator.getSpanish()}</p>`;
     }
