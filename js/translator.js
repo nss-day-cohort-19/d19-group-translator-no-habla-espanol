@@ -78,15 +78,34 @@ translateBtn.addEventListener("click", function(event){
         Translator.setSpanish(userText);
         translatedDiv.innerHTML = `<p>${Translator.getSpanish()}</p>`;
     }
+
+
 })
 
+    //sets speach dialect to reflect the language translation selected.
+    var speakBtn = document.getElementById("speak");
+    speakBtn.addEventListener("click", function(event){
+        //Selects language again
+        var language;
+        var translateOption = document.getElementsByName("translate-language");
+        for(var i=0;i<translateOption.length;i++){
+            if(translateOption[i].selected){
+                language = translateOption[i].value;
+            }
+        }
 
-var speakBtn = document.getElementById("speak");
-speakBtn.addEventListener("click", function(event){
-    console.log(translatedDiv.textContent);
-    responsiveVoice.speak(translatedDiv.textContent);
+        if (language === "French"){
+            responsiveVoice.speak(translatedDiv.textContent,"French Female");
+        }else if(language === "Hungarian"){
+            responsiveVoice.speak(translatedDiv.textContent,"Hungarian Female");
+        } else if(language === "Spanish"){
+            responsiveVoice.speak(translatedDiv.textContent,"Spanish Female");
+        }
 
-});
+    });
+
+console.log(responsiveVoice.getVoices());
+
 
 
 
